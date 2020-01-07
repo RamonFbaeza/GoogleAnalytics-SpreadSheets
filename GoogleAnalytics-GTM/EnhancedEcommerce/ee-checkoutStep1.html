@@ -1,0 +1,23 @@
+<script>
+
+function onCheckout() {
+  dataLayer.push({
+    'event': 'checkout',
+    'ecommerce': {
+      'checkout': {
+        'actionField': {'step': 1},
+        'products': [{
+          'name': 'Orbea Orca M29 (2018)',//Nombre del producto 
+          'id': '41680',//ID único del producto
+          'price': '1929.43',//Precio del producto          
+          'brand': 'Orbea',//Marca a la que pertenece el producto
+          'category': 'Bicicletas de montaña',//Categoría principal a la que pertenece el producto
+          'variant': '',
+          'quantity': 1//Número de unidades del producto añadidas al carrito
+       }]
+     }
+   }
+  });
+}
+
+</script>

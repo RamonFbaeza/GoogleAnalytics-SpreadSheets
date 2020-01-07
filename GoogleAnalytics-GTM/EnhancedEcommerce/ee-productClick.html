@@ -1,0 +1,27 @@
+<script>
+
+function(productObj) {
+  dataLayer.push({
+    'event': 'productClick',
+    'ecommerce': {
+      'click': {
+        'actionField': {'list': 'bicicletas-montaña'},      
+        'products': [{
+          'name': productObj.name,                      
+          'id': productObj.id,
+          'price': productObj.price,
+          'category': productObj.cat,
+          'brand': '',
+          'variant': '',
+          'position': productObj.position
+         }]
+       }
+     },
+     'eventCallback': function() {
+       document.location = productObj.url
+     }
+  });
+}
+
+
+</script>

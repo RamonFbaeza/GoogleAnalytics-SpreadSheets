@@ -1,0 +1,14 @@
+<script>
+
+function onCheckoutOption(step, checkoutOption) {
+  dataLayer.push({
+    'event': 'checkoutOption',
+    'ecommerce': {
+      'checkout_option': {
+        'actionField': {'step': step, 'option': checkoutOption}
+      }
+    }
+  });
+}
+
+</script>
