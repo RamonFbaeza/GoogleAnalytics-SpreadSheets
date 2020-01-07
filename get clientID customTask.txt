@@ -1,0 +1,6 @@
+function() {
+  var customDimensionIndex = 1;
+  return function(model) {
+    model.set('dimension' + customDimensionIndex, model.get('clientId'));
+  }
+}

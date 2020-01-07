@@ -1,0 +1,239 @@
+//Registro de transacciones
+
+<script>
+dataLayer.push({
+  'event': 'transactionCompleted',
+  'ecommerce': {
+    'purchase': {
+      'actionField': {
+        'id': '7473', //ID de transacción                         
+        'affiliation': 'Tuvalum',//Vendedor del producto
+        'revenue': '1929.43',//Ingresos totals de la venta                     
+        'tax':'14.90',//Tasa asociadas a la venta
+        'shipping': '15.99', //Gastos de envío del pedido
+        'currency': 'EUR', //Moneda en la que se ha realizado el pedido
+        'coupon': 'SUMMER_SALE' //Código de descuento usado en la transacción
+        
+      },
+      'products': [{                            
+        'name': 'Orbea Orca M29 (2018)', //Nombre del producto    
+        'id': '41680', //Id del producto
+        'price': '1929.43', //Precio del producto
+        'quantity': 1, //Cantidad
+        'category': 'Bicicletas de montaña', // Categoría a la que pertenece el producto
+        'brand': 'Orbea', //Marca del producto
+        'variant': ''                          
+       }]
+    }
+  }
+});
+
+
+//Añadir un producto al carrito
+
+dataLayer.push({
+  'event': 'addToCart',
+  'ecommerce': {
+    'currency': 'EUR',
+    'add': {                                
+      'products': [{                       
+        'name': 'Orbea Orca M29 (2018)',//Nombre del producto
+        'id': '41680',//ID único del producto
+        'price': '1929.43',//Precio del producto
+        'quantity': 1,//Número de unidades del producto añadidas al carrito
+        'category': 'Bicicletas de montaña',//Categoría principal a la que pertenece el producto
+        'brand': 'Orbea',//Marca a la que pertenece el producto
+        'variant': ''
+       }]
+    }
+  }
+});
+
+
+
+
+//Eliminar un producto al carrito
+
+dataLayer.push({
+  'event': 'removeFromCart',
+  'ecommerce': {
+    'currency': 'EUR',
+    'add': {                                
+      'products': [{                       
+        'name': 'Orbea Orca M29 (2018)',//Nombre del producto
+        'id': '41680',//ID único del producto
+        'price': '1929.43',//Precio del producto
+        'quantity': 1,//Número de unidades del producto añadidas al carrito
+        'category': 'Bicicletas de montaña',//Categoría principal a la que pertenece el producto
+        'brand': 'Orbea',//Marca a la que pertenece el producto
+        'variant': ''
+       }]
+    }
+  }
+});
+
+
+
+//Vista de un producto en detalle (página de producto)
+
+dataLayer.push({
+  'ecommerce': {
+    'detail': {
+      'actionField': {'list':'Homepage'},
+      'products': [{
+        'name': 'Orbea Orca M29 (2018)',//Nombre del producto         
+        'id': '41680',//ID único del producto
+        'price': '1929.43',//Precio del producto
+        'category': 'Bicicletas de montaña',//Categoría principal a la que pertenece el producto
+        'brand': 'Orbea',//Marca a la que pertenece el producto
+        'variant': ''
+       }]
+     }
+   }
+});
+
+
+
+//Checkout - Step 1
+
+function onCheckout() {
+  dataLayer.push({
+    'event': 'checkout',
+    'ecommerce': {
+      'checkout': {
+        'actionField': {'step': 1},
+        'products': [{
+          'name': 'Orbea Orca M29 (2018)',//Nombre del producto 
+          'id': '41680',//ID único del producto
+          'price': '1929.43',//Precio del producto          
+	        'brand': 'Orbea',//Marca a la que pertenece el producto
+          'category': 'Bicicletas de montaña',//Categoría principal a la que pertenece el producto
+          'variant': '',
+          'quantity': 1//Número de unidades del producto añadidas al carrito
+       }]
+     }
+   }
+  });
+}
+
+//Checkout - Step 2
+
+function onCheckout() {
+  dataLayer.push({
+    'event': 'checkout',
+    'ecommerce': {
+      'checkout': {
+        'actionField': {'step': 2},
+        'products': [{
+          'name': 'Orbea Orca M29 (2018)',//Nombre del producto 
+          'id': '41680',//ID único del producto
+          'price': '1929.43',//Precio del producto          
+          'brand': 'Orbea',//Marca a la que pertenece el producto
+          'category': 'Bicicletas de montaña',//Categoría principal a la que pertenece el producto
+          'variant': '',
+          'quantity': 1//Número de unidades del producto añadidas al carrito
+       }]
+     }
+   }
+  });
+}
+
+//Checkout option (método de pago seleccionado por el usuario)
+function onCheckoutOption(step, checkoutOption) {
+  dataLayer.push({
+    'event': 'checkoutOption',
+    'ecommerce': {
+      'checkout_option': {
+        'actionField': {'step': step, 'option': checkoutOption}
+      }
+    }
+  });
+}
+
+
+
+
+//Product Impressions
+dataLayer.push({
+  'ecommerce': {
+    'impressions': [
+     {
+       'name': 'WRC PRO SLX (2018)',//Nombre del producto       
+       'id': '42074',//ID único del producto
+       'price': '645.00',//Precio del producto 
+       'category': 'Bicicletas de montaña',//Categoría principal a la que pertenece el producto
+       'brand': 'WRC',//Marca a la que pertenece el producto
+       'variant': '',
+       'list': 'bicicletas-montaña',
+       'position': 1
+     },
+     {
+       'name': 'WRC TEAM XT (2018)',
+       'id': '67890',
+       'price': '1095.00',
+       'category': 'Bicicletas de montaña',
+       'brand': 'WRC',
+       'variant': '',
+       'list': 'bicicletas-montaña',
+       'position': 2
+     }]
+  }
+});
+
+//Product Click
+function(productObj) {
+  dataLayer.push({
+    'event': 'productClick',
+    'ecommerce': {
+      'click': {
+        'actionField': {'list': 'bicicletas-montaña'},      
+        'products': [{
+          'name': productObj.name,                      
+          'id': productObj.id,
+          'price': productObj.price,
+          'category': productObj.cat,
+          'brand': '',
+          'variant': '',
+          'position': productObj.position
+         }]
+       }
+     },
+     'eventCallback': function() {
+       document.location = productObj.url
+     }
+  });
+}
+
+
+
+
+
+
+//Promotion Impressions
+dataLayer.push({
+  'ecommerce': {
+    'promoView': {
+      'promotions': [                     // Array of promoFieldObjects.
+       {
+         'id': 'JUNE_PROMO13',            // ID or Name is required.
+         'name': 'June Sale',
+         'creative': 'banner1',
+         'position': 'slot1'
+       },
+       {
+         'id': 'FREE_SHIP13',
+         'name': 'Free Shipping Promo',
+         'creative': 'skyscraper1',
+         'position': 'slot2'
+       }]
+    }
+  }
+});
+
+
+
+
+
+
+
+</script>

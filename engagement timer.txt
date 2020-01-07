@@ -1,0 +1,42 @@
+(function(){
+var i;
+var c;
+var ca;
+var name;
+var px_timer;
+
+	//Check presence of engagement cookie
+	if(document.cookie.indexOf('engaged')== -1) {
+		document.cookie="engaged=" + 0 + "; path=/;"
+	};
+	
+//Get engagement cookie value
+	name = "engaged=";
+	ca = document.cookie.split(';');
+		for (var i=0; i<ca.length; i++){
+			c = ca[i];
+			while (c.charAt(0)==' ') c = c.substring(1);
+				if (c.indexOf(name) != -1) px_timer = c.substring(name.length,c.length);
+		}
+
+//Set 1000ms interval
+	i = setInterval(function(){
+		//Increment timer value by 1 every 1000ms
+		px_timer++
+			//Set cookie to timer value
+			document.cookie="engaged=" + px_timer + "; path=/;"
+				console.log("time = " + px_timer);
+		//Fire event when timer reaches 15 seconds	
+		if(px_timer === 15) {
+			dataLayer.push({'event':'gaEvent','gaEventCat':'Engaged User','gaEventAct':'15 Seconds','gaEventLab':location.pathname});
+				console.log("Enagaged User - 15 Seconds");
+		}
+		//Fire event when timer reaches 45 seconds
+		else if (px_timer === 45) {
+			dataLayer.push({'event':'gaEvent','gaEventCat':'Engaged User','gaEventAct':'60 Seconds','gaEventLab':location.pathname});
+				console.log("Enagaged User - 45 Seconds");
+				clearInterval(i);
+		};
+	},1000);
+})();
+
